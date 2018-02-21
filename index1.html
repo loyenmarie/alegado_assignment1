@@ -1,0 +1,29 @@
+<!-- Loyen Marie A. Alegado -->
+<!-- INSTAGRAM API WITH PURE JAVASCRIPT THAT LETS YOU GET YOUR ACCOUNT INFORMATION -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<ul id="rudr_userinfo"></ul>
+<link rel="stylesheet" href="style.css">
+
+<script>
+var token = '253456653.1c5fafa.f5e466437e514941995d1bff09d8e6b2',
+    container2 = document.getElementById( 'rudr_userinfo' ),
+    scrElement2 = document.createElement( 'script' );
+ 
+window.mishaProcessResult2 = function( response ) {
+	container2.innerHTML = '<div><p><img src="' + response.data.profile_picture + '"></p></div>'
+		+ '<div><h1>' + response.data.username + '</h1>'
+		+ '<p>#' + response.data.id + '</p>'
+		+ '<p>' + response.data.counts.media + ' media ' + response.data.counts.followed_by + ' followers ' + response.data.counts.follows + ' follows</p>'
+		+ '<p><strong>' + response.data.full_name + '</strong> ' + response.data.bio + '<a href="' + response.data.website + '">' + response.data.website + '</a></p></div>';
+}
+ 
+scrElement2.setAttribute( 'src', 'https://api.instagram.com/v1/users/self?access_token=' + token + '&callback=mishaProcessResult2' );
+document.body.appendChild( scrElement2 );
+</script>
+
+</body>
+</html>
